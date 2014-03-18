@@ -22,6 +22,13 @@
 
 
 
+## 演示站点: [bastogne](http://bastogne.chinacloudapp.cn)
+
+目前部署在windows azure的小型虚拟机上
+
+* 架构：Linux(ubuntu) + nginx + MongoDB + Python3
+
+
 ## 已知问题
 
 由于没有合适的地方存放图片，只是直接贴豆瓣的图片，部分图片由于访问限制无法正常显示。
