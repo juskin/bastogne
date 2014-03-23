@@ -38,7 +38,7 @@ class MovieHandler(BaseHandler):
 class SearchHandler(BaseHandler):
     def get(self):
         q = self.get_argument('q', '')
-        page = self.get_argument('page', 0)
+        page = int(self.get_argument('page', 1)) - 1
         posts = self.db.movie.find({'$or': [{'title': q}, {'casts': q}, {'directors': q}, {'db_id': q}]})\
             .skip(self.conf['MOVIE_NUM'] * page).limit(self.conf['MOVIE_NUM'])\
             .sort([('id', 1)])
@@ -52,14 +52,16 @@ class SearchHandler(BaseHandler):
             self.render('public/no-result.html', result=result, side=self.get_side())
         else:
             page_nav = {
-                'page': page,
+                'page': page + 1,
                 'count': posts.count(),
-                'url': '/movie?' + urlencode({'q': q})
+                'url': '/search?' + urlencode({'q': q})
             }
             self.render('index/index.html', posts=posts, side=self.get_side(), page_nav=page_nav)
 
 
 class LoginHandler(BaseHandler):
+    """todo 添加登陆
+    """
     def get(self):
         self.render('index/login.html', side=self.get_side())
 
