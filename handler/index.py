@@ -1,4 +1,5 @@
 from urllib.parse import urlencode
+from tornado.web import authenticated
 from .base import BaseHandler
 
 
@@ -68,8 +69,31 @@ class LoginHandler(BaseHandler):
     def post(self, *args, **kwargs):
         username = self.get_argument('username')
         password = self.get_argument('password')
+        user = self.db.user.find_one({'username': username})
+        if user is not None:
+            if user['password'] == password:
+                self.set_secure_cookie('uid', )
+                self.redirect('/')
+            else:
+                self.write('密码错误')
+        else:
+            self.write('用户名或密码错误')
 
 
 class LogoutHandler(BaseHandler):
+    @authenticated
     def get(self, *args, **kwargs):
+        pass
+
+    @authenticated
+    def post(self, *args, **kwargs):
+        pass
+
+
+class RegHandler(BaseHandler):
+    @authenticated
+    def get(self, *args, **kwargs):
+        pass
+
+    def post(self, *args, **kwargs):
         pass

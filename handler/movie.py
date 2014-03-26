@@ -1,4 +1,5 @@
 from .base import BaseHandler
+from tornado.web import authenticated
 
 
 class PostHandler(BaseHandler):
@@ -13,24 +14,30 @@ class PostHandler(BaseHandler):
 
 
 class AddHandler(BaseHandler):
+    @authenticated
     def get(self, *args, **kwargs):
         self.render('post/add.html', side=self.get_side())
 
+    @authenticated
     def post(self, *args, **kwargs):
         pass
 
 
 class UpdateHandler(BaseHandler):
+    @authenticated
     def get(self, *args, **kwargs):
         pass
 
+    @authenticated
     def post(self, *args, **kwargs):
         pass
 
 
 class DeleteHandler(BaseHandler):
+    @authenticated
     def get(self, *args, **kwargs):
         pass
 
+    @authenticated
     def post(self, *args, **kwargs):
         pass

@@ -29,6 +29,13 @@
 * 架构：Linux(ubuntu) + nginx + MongoDB + Python3
 
 
+## api
+
+通过title参数获取电影信息
+
+http://bastogne.chinacloudapp.cn/api/movie?title=阿甘正传
+
+
 ## 已知问题
 
 由于没有合适的地方存放图片，只是直接贴豆瓣的图片，部分图片由于访问限制无法正常显示。
