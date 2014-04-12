@@ -3,7 +3,7 @@
 """
 
 
-from hashlib import sha1
+from base64 import b64encode
 from queue import Queue
 from threading import Thread
 from urllib.request import urlopen
@@ -22,7 +22,7 @@ class DownloadThread(Thread):
     def run(self):
         while queue.empty() is False:
             url = queue.get()
-            with open('e:/Temp/bastogne/image/' + sha1(url.encode()).hexdigest() + '.jpg', 'wb') as f:
+            with open('e:/Temp/bastogne/image/' + b64encode(url.encode()).decode() + '.jpg', 'wb') as f:
                 try:
                     res = urlopen(url)
                     f.write(res.read())
@@ -38,4 +38,3 @@ if __name__ == '__main__':
     queue.join()
 
     print('下载完毕')
-

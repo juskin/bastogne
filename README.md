@@ -44,6 +44,5 @@ http://bastogne.chinacloudapp.cn/api/movie?title=阿甘正传
 
 
 ## TODO
-
 * 直接根据豆瓣id添加新的电影条目
 * 同步豆瓣电影评论

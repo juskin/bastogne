@@ -1,3 +1,7 @@
+"""简单的电影信息api
+"""
+
+
 import json
 from .base import BaseHandler
 
